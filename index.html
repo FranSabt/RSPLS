@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="index.css" rel="stylesheet" type="text/css">
+
+  <title>Rock, Paper, Scissor...</title>
+</head>
+<body>
+  <h1>Rock, Paper, Scissor, Lizzard, Spock</h1>
+  <section class="main-status">
+    <div class="Victorys">Victorys: </div>
+    <div class="Defeats">Defeats: </div>
+    <div class="Ties">Ties: </div>
+  </section>
+
+  <section class="display-container">
+    <div class="display">
+      <div class="Phand player">You</div>
+      <div class="game-score">Battle Status</div>
+      <div class="phand computer">The Enemy</div>
+    </div>
+    <div class="btn"></div>
+  </section>
+
+  <section class="hand-container">
+      <div class="hand-selector">
+        <div class="hand">
+          <div class="img-hand rock"><img class="img"  src="./images/rock.svg" alt="rock"/>ROCK
+            <input type="radio" id="rock" name="rock" value="rock"checked></div>
+        </div>
+        <div class="hand">
+          <div class="img-hand scissor"><img class="img"  src="./images/scissors.svg" alt="scissor">PAPER
+            <input type="radio" id="scissor" name="scissor" value="scissor"></div>
+        </div>
+        <div class="hand">
+          <div class="img-hand paper"><img class="img"  src="./images/paper.svg" alt="paper">SCISSOR
+            <input type="radio" id="paper" name="paper" value="paper"></div>
+        </div>
+        <div class="hand">
+          <div class="img-hand lizzard"><img class="img"  src="./images/lizard.svg" alt="lizzard">LIZZARD
+            <input type="radio" id="lizzard" name="lizzard" value="lizzard"></div>
+        </div>
+        <div class="hand">
+          <div class="img-hand spock"><img  class="img" src="./images/spock.svg" alt="spock">SPOCK
+            <input type="radio" id="spock" name="spock" value="spock"></div>
+        </div>
+      </div>
+      <div class="btn">
+        <button class="duel">Duel!</button>
+      </div>
+  </section>
+  
+</body>
+</html>
+<script src="index.js"></script>
