@@ -15,25 +15,33 @@ h1{
   justify-content: center;
 }
 .main-status{
-  height: 25vh;
+  height: 10vh;
   width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items:flex-start;
-  justify-content: center;
+  align-items:center;
+  justify-content: space-around;
   
 }
 
 .display-container{
-  height: 25vh;
+  height: 40vh;
   width: 100%;
   display: flex;
   align-items:center;
   justify-content: space-between;
 }
 
+.select-hand{
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #831512 ;
+}
+
 .display{
-  height: 25vh;
+  height: 85%;
   width: 100%;
   display: flex;
   align-items:center;
@@ -41,9 +49,17 @@ h1{
 }
 
 .hand-container{
+  padding-top: 5vh;
   display: flex;
   flex-direction: column;
 }
+
+.phand{
+  height: 100%;
+}
+
+
+/* Hand Section*/
 
 .hand-selector{
   height: 25vh;
