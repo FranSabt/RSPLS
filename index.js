@@ -1,26 +1,38 @@
+//VARIABLES
 let wins = 0;
 let loss = 0;
+var hand = "";
 
+let victories = 0;
+let defeats = 0;
+let Ties = 0
+
+//PLAY FUNCTIONS
 const computerPlay = () =>{
   let value = Math.floor(Math.random() * 5)
+  console.log(value)
   switch(value){ 
     case 0 :
+      document.getElementById("choisePC").src = "./images/paper.svg";
       return "paper"
     case 1 :
+      document.getElementById("choisePC").src = "./images/rock.svg";
       return "rock"
     case 2 :
+      document.getElementById("choisePC").src = "./images/scissors.svg";
       return "scissor"
     case 3 :
-      return "lizzard"
+      document.getElementById("choisePC").src = "./images/lizard.svg"
+      return "lizard"
     case 4 :
+      document.getElementById("choisePC").src = "./images/spock.svg";
       return "spock"
   }
 } 
+/*
+const playerSelection = selection =>{
 
-const playerSelection = () =>{
-  let selection = parseInt(prompt("Select your hand:\n 1 - Paper\n 2 - Scissor\n 3 - Rock\n 4 - Lizzard\n 5 - Spock"));
-
-  if (selection >= 0 && selection <= 4){
+  if (selection >= 0 && selection <= 5){
     switch(selection){ 
       case 1 :
         return "paper"
@@ -29,25 +41,24 @@ const playerSelection = () =>{
       case 3 :
         return "scissor"
       case 4 :
-        return "lizzard"
+        return "lizard"
       case 5 :
         return "spock"
       }
     }
-  else {
-  return playerSelection();
-  }
+
 }
+*/
 
 const gamePlay = (computer, player) =>{
   if (
-    (player == "rock" && (computer === "scissor" || computer === "lizzard" ))
+    (player == "rock" && (computer === "scissor" || computer === "lizard" ))
     ||
     (player == "paper" && (computer === "rock" || computer === "spock" ))
     ||
-    (player == "scissor" && (computer === "paper" || computer === "lizzard" ))
+    (player == "scissor" && (computer === "paper" || computer === "lizard" ))
     ||
-    (player == "lizzard" && (computer === "paper" || computer === "spock" ))
+    (player == "lizard" && (computer === "paper" || computer === "spock" ))
     ||
     (player == "spock" && (computer === "paper" || computer === "rock" ))
   ){
@@ -62,17 +73,46 @@ const gamePlay = (computer, player) =>{
   }
 }
 
-  /*
-  for(let i = 1; i <= 5; i++){
-    alert(`Round ${i}`);
-    alert(`Wins: ${wins}\n Loss: ${loss}`);
-    gamePlay(computerPlay(), playerSelection());
-  }
-
-  wins === loss ? alert("No victory, no defeat")
-  : wins > loss ? alert("You are victorius!!!")
-  : alert("You has been defeated");
-
-  */
 
 
+
+//DOM FUNCTIONS
+const updateGlobal = () => {
+  document.getElementById("victories").innerHTML = `Victories: ${victories}`
+  document.getElementById("Defeats").innerHTML = `Defeats: ${defeats}`
+  document.getElementById("Ties").innerHTML = `Ties: ${defeats}`
+}
+
+const playerChoice = () =>{
+  document.getElementsByClassName("img").onclick =  a
+}
+
+const playerHand = (selection) => {
+  console.log(selection)
+  let image = (`./images/${selection}.svg`);
+  document.getElementById("choise").src = image;
+  gamePlay(computerPlay(), selection)
+}
+
+
+
+  if (wins === loss && (wins !== 0 && loss !== 0)){
+    alert("No victory, no defeat"); 
+    Ties++;
+    wins = 0;
+    loss = 0;
+  } 
+  else if(wins > loss){
+    alert("You are victorius!!!"); 
+    victories++;
+    wins = 0;
+    loss = 0;
+  } 
+  else if (loss > wins){
+    alert("You has been defeated"); 
+    defeats++;
+    wins = 0;
+    loss = 0;
+  } 
+
+  updateGlobal();

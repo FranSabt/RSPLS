@@ -11,19 +11,19 @@
 <body>
   <h1>Rock, Paper, Scissor, Lizzard, Spock</h1>
   <section class="main-status">
-    <div class="Victorys">Victorys: </div>
-    <div class="Defeats">Defeats: </div>
-    <div class="Ties">Ties: </div>
+    <div class="Victories" id="victories">Victorys: </div>
+    <div class="Defeats" id="Defeats">Defeats: </div>
+    <div class="Ties" id="Ties">Ties: </div>
   </section>
 
   <section class="display-container">
     <div class="display">
       <div class="select-hand">
-        <div class="phand">You<img class="img" src="./images/sheldonThrones.png"/></div>
+        <div class="phand">You<img class="img" id="choise" src="./images/sheldonThrones.png"/></div>
       </div>
       <div class="game-score">Battle Status</div>
       <div class="select-hand">
-        <div class="phand">You<img class="img" src="./images/sheldonThrones.png"/></div>
+        <div class="phand">You<img class="img" id="choisePC" src="./images/sheldonThrones.png"/></div>
       </div>
     </div>
     <div class="btn"></div>
@@ -31,32 +31,41 @@
 
   <section class="hand-container">
       <div class="hand-selector">
+        
         <div class="hand">
-          <div class="img-hand rock"><img class="img"  src="./images/rock.svg" alt="rock"/>ROCK
-            <input type="radio" id="rock" name="rock" value="rock"checked></div>
+          <div class="img-hand rock"><img class="img"  
+            src="./images/rock.svg" alt="rock" onclick='playerHand("rock")'/>ROCK
+          </div>
         </div>
+
         <div class="hand">
-          <div class="img-hand scissor"><img class="img"  src="./images/scissors.svg" alt="scissor">PAPER
-            <input type="radio" id="scissor" name="scissor" value="scissor"></div>
+          <div class="img-hand scissor"><img class="img"  
+            src="./images/scissors.svg" alt="scissor" onclick='playerHand("paper")'>PAPER
+          </div>
         </div>
+
         <div class="hand">
-          <div class="img-hand paper"><img class="img"  src="./images/paper.svg" alt="paper">SCISSOR
-            <input type="radio" id="paper" name="paper" value="paper"></div>
+          <div class="img-hand paper"><img class="img"  
+            src="./images/paper.svg" alt="scissor" onclick='playerHand("scissors")'>SCISSOR
+            <label for="paper">
+              <input type="radio" id="paper" name="phand" value="paper">
+            </label>
+          </div>
         </div>
+
         <div class="hand">
-          <div class="img-hand lizzard"><img class="img"  src="./images/lizard.svg" alt="lizzard">LIZZARD
-            <input type="radio" id="lizzard" name="lizzard" value="lizzard"></div>
+          <div class="img-hand lizzard"><img class="img"
+            src="./images/lizard.svg" alt="lizzard" onclick='playerHand("lizard")'>LIZZARD
+          </div>
         </div>
+
         <div class="hand">
-          <div class="img-hand spock"><img  class="img" src="./images/spock.svg" alt="spock">SPOCK
-            <input type="radio" id="spock" name="spock" value="spock"></div>
+          <div class="img-hand spock"><img  class="img" 
+            src="./images/spock.svg" alt="spock" onclick='playerHand("spock")'>SPOCK
+          </div>
         </div>
-      </div>
-      <div class="btn">
-        <button class="duel">Duel!</button>
       </div>
   </section>
-  
 </body>
 </html>
 <script src="index.js"></script>
