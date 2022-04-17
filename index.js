@@ -1,7 +1,11 @@
+
+
 //VARIABLES
 let wins = 0;
 let loss = 0;
 var hand = "";
+let round = 1;
+let ties = 0;
 
 let victories = 0;
 let defeats = 0;
@@ -10,7 +14,6 @@ let Ties = 0
 //PLAY FUNCTIONS
 const computerPlay = () =>{
   let value = Math.floor(Math.random() * 5)
-  console.log(value)
   switch(value){ 
     case 0 :
       document.getElementById("choisePC").src = "./images/paper.svg";
@@ -50,37 +53,75 @@ const playerSelection = selection =>{
 }
 */
 
-const gamePlay = (computer, player) =>{
-  if (
-    (player == "rock" && (computer === "scissor" || computer === "lizard" ))
-    ||
-    (player == "paper" && (computer === "rock" || computer === "spock" ))
-    ||
-    (player == "scissor" && (computer === "paper" || computer === "lizard" ))
-    ||
-    (player == "lizard" && (computer === "paper" || computer === "spock" ))
-    ||
-    (player == "spock" && (computer === "paper" || computer === "rock" ))
-  ){
-    prompt(`You Win\n You choose ${player}, and beats ${computer}`)
-    return ++wins
+const gamePlay = (computer, player, r) =>{
+  console.log(r)
+  if (r >= 5){
+    roundCount(wins, loss, ties);
   }
-  else if(player === computer){alert("Tie!")}
-
   else{
-    prompt(`You Loose :c\n You choose ${player}, has beaten by ${computer}`)
-    return ++loss
+    if (
+      (player == "rock" && (computer === "scissor" || computer === "lizard" ))
+      ||
+      (player == "paper" && (computer === "rock" || computer === "spock" ))
+      ||
+      (player == "scissor" && (computer === "paper" || computer === "lizard" ))
+      ||
+      (player == "lizard" && (computer === "paper" || computer === "spock" ))
+      ||
+      (player == "spock" && (computer === "paper" || computer === "rock" ))
+    ){
+      document.getElementById("message").innerHTML = 
+      (`You Win<br> You choose ${player}, and beats ${computer}`);
+      ++wins, ++round;
+      updateRound(wins, loss, ties, round);
+      return;
+    }
+    else if(player === computer){
+      document.getElementById("message").innerHTML = "Tie!"
+      ++ties, ++round;
+      updateRound(wins, loss, ties, round);
+      return
+    }
+  
+    else{
+      document.getElementById("message").innerHTML = 
+      `You Loose :c<br> You choose ${player}, has beaten by ${computer}`
+      ++loss, ++round;
+      updateRound(wins, loss, ties, round);
+      return
+    }
   }
+}
+
+const roundCount = (w, l, t) =>{
+  if (w === l && (w !== 0 && l !== 0)){
+    alert("No victory, no defeat"); 
+    return Ties++, wins = 0, loss = 0, round = 0;
+  } 
+  else if(w > l){
+    alert("You are victorius!!!");
+    return victories++, wins = 0, loss = 0, round = 0;
+  } 
+  else if (l > w){
+    alert("You has been defeated");
+    return defeats++, wins = 0, loss = 0, round = 0;
+  } 
+}
+
+const updateRound = (w, l, t, r) => {
+  document.getElementById("wins").innerHTML = `Wins ${w}`
+  document.getElementById("losses").innerHTML = `Losses ${l}`
+  document.getElementById("ties").innerHTML = `Ties: ${t}`
+  document.getElementById("round").innerHTML = `Round: ${r}`
 }
 
 
 
-
 //DOM FUNCTIONS
-const updateGlobal = () => {
+const updateGlobal = (victories, defeats, Ties ) => {
   document.getElementById("victories").innerHTML = `Victories: ${victories}`
   document.getElementById("Defeats").innerHTML = `Defeats: ${defeats}`
-  document.getElementById("Ties").innerHTML = `Ties: ${defeats}`
+  document.getElementById("Ties").innerHTML = `Ties: ${Ties}`
 }
 
 const playerChoice = () =>{
@@ -88,31 +129,12 @@ const playerChoice = () =>{
 }
 
 const playerHand = (selection) => {
-  console.log(selection)
+  updateGlobal(victories, defeats, Ties);
   let image = (`./images/${selection}.svg`);
   document.getElementById("choise").src = image;
-  gamePlay(computerPlay(), selection)
+  gamePlay(computerPlay(), selection, round);
 }
 
+  updateRound(wins, loss, ties, round);
 
-
-  if (wins === loss && (wins !== 0 && loss !== 0)){
-    alert("No victory, no defeat"); 
-    Ties++;
-    wins = 0;
-    loss = 0;
-  } 
-  else if(wins > loss){
-    alert("You are victorius!!!"); 
-    victories++;
-    wins = 0;
-    loss = 0;
-  } 
-  else if (loss > wins){
-    alert("You has been defeated"); 
-    defeats++;
-    wins = 0;
-    loss = 0;
-  } 
-
-  updateGlobal();
+  updateGlobal(victories, defeats, Ties);

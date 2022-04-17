@@ -14,6 +14,10 @@ h1{
   align-items: center;
   justify-content: center;
 }
+
+li{
+  list-style:none;
+}
 .main-status{
   height: 10vh;
   width: 100%;
@@ -46,6 +50,12 @@ h1{
   display: flex;
   align-items:center;
   justify-content:space-around;
+}
+
+.log{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
 .hand-container{
@@ -82,6 +92,12 @@ h1{
 
 .img{
   height: 100%;
+  box-shadow: 10px 10px 5,5px 4px #560758
+}
+
+.img:hover{
+  border-radius: 100px;
+  box-shadow: 15px 15px 7px 5px rgba(0,0,0,0.75);
 }
 
 .btn{

@@ -19,11 +19,22 @@
   <section class="display-container">
     <div class="display">
       <div class="select-hand">
-        <div class="phand">You<img class="img" id="choise" src="./images/sheldonThrones.png"/></div>
+        <div class="phand">
+          <img class="img" id="choise" src="./images/sheldonThrones.png"/></div>
       </div>
-      <div class="game-score">Battle Status</div>
+      <div class="log">
+        <div class="game-score">Battle Status</div>
+        <ul>
+          <li id="round" class="ties">Round: a</li>
+          <li id="message" class="message">Prepare to fight</li>
+          <li id="wins" class="wins">Wins: a</li>
+          <li id="losses" class="losses">Losses: a</li>
+          <li id="ties" class="ties">Ties: a</li>
+        </ul>
+      </div>
       <div class="select-hand">
-        <div class="phand">You<img class="img" id="choisePC" src="./images/sheldonThrones.png"/></div>
+        <div class="phand">
+          <img class="img" id="choisePC" src="./images/sheldonThrones.png"/></div>
       </div>
     </div>
     <div class="btn"></div>
@@ -47,9 +58,6 @@
         <div class="hand">
           <div class="img-hand paper"><img class="img"  
             src="./images/paper.svg" alt="scissor" onclick='playerHand("scissors")'>SCISSOR
-            <label for="paper">
-              <input type="radio" id="paper" name="phand" value="paper">
-            </label>
           </div>
         </div>
 
